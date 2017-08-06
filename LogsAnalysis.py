@@ -14,7 +14,7 @@ DBNAME = "news"
 #     db.close()
 #     return results
 
-def top_articles():
+def top_articles_and_authors():
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     # copy pastable format for debugging with psql console
@@ -32,15 +32,18 @@ def top_articles():
               "ON top_paths.path = '/article/' || articles.slug;")
     articles = c.fetchall()
     print articles
-    # c.execute("CREATE VIEW popular_authors AS "
-    #           "SELECT author, count (log.path) AS views "
-    #           "FROM articles JOIN log "
-    #           "ON log.path = '/article/' || articles.slug "
-    #           "GROUP BY author "
-    #           "ORDER BY views desc;")
+    c.execute("CREATE VIEW popular_authors AS "
+              "SELECT author, count (log.path) AS views "
+              "FROM articles JOIN log "
+              "ON log.path = '/article/' || articles.slug "
+              "GROUP BY author "
+              "ORDER BY views desc;")
+    c.execute("SELECT * FROM popular_authors;")
+    authors = c.fetchall()
+    print authors
     db.close()  # when you close, it gets rid of your views
 
 if __name__ == '__main__':
-    top_articles()
+    top_articles_and_authors()
 
 # title1 = articles[0][0] #[[title, num]...] #print title1 <--first steps for formatting to plain text
