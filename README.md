@@ -39,4 +39,7 @@ https://stackoverflow.com/questions/6133107/extract-date-yyyy-mm-dd-from-a-times
 https://stackoverflow.com/questions/28736227/postgresql-9-3-convert-to-float
 https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md
 https://stackoverflow.com/questions/435424/postgresql-how-to-create-table-only-if-it-does-not-already-exist?noredirect=1&lq=1
+https://stackoverflow.com/questions/8723574/in-postgres-can-you-set-the-default-formatting-for-a-timestamp-by-session-or-g
+https://stackoverflow.com/questions/28142688/how-to-turn-input-number-into-a-percentage-in-python
+https://stackoverflow.com/questions/21189346/shebang-line-for-python-2-7?lq=1
 Trish Whetzel - Udacity 1:1 Appointments
