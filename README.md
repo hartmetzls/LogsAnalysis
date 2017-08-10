@@ -7,11 +7,10 @@ On which days did more than 1% of requests lead to errors?
 
 Getting Started
 
-This code operates on python, a virtual machine such as vagrant, and postgreSQL.
+This project requires Python 2.7 and PostgreSQL.
 
-What things you need to install the software and how to install them:
-
-https://classroom.udacity.com/nanodegrees/nd000/parts/b910112d-b5c0-4bfe-adca-6425b137ed12/modules/a3a0987f-fc76-4d14-a759-b2652d06ab2b/lessons/0aa64f0e-30be-455e-a30d-4cae963f75ea/concepts/a9cf98c8-0325-4c68-b972-58d5957f1a91
+To start on this project, you'll need database software (provided by a Linux virtual machine) and the data to analyze. The newsdata sql database can be found here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
+You will also need to install the Python library psycopg2. 
 
 Create Views
 
