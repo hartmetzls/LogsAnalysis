@@ -9,8 +9,10 @@ Getting Started
 
 This project requires Python 2.7 and PostgreSQL.
 
-To start on this project, you'll need database software (provided by a Linux virtual machine) and the data to analyze. The newsdata sql database can be found here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
-You will also need to install the Python library psycopg2. 
+1. Download the newsdata sql database found here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
+and extract to the directory containing LogsAnalysis.py
+2. Install the Python library psycopg2. 
+3. Run 'python LogsAnalysis.py'.
 
 Create Views
 
