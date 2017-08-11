@@ -1,20 +1,20 @@
-LogsAnalysis
+# Logs Analysis
 
-This code pulls from the news database tables articles, authors, and logs to answer the following questions:
-What are the most popular three articles of all time?
-Who are the most popular article authors of all time?
-On which days did more than 1% of requests lead to errors?
+This code pulls from the news database, which is a mock database for a fictional news site. This code will use three tables in the news database named articles, authors, and logs to answer the following questions:
+1. What are the most popular three articles of all time?
+2. Who are the most popular article authors of all time?
+3. On which days did more than 1% of requests lead to errors?
 
-Getting Started
+## Getting Started
 
-This project requires Python 2.7 and PostgreSQL.
+This project requires Python 2.7, PostgreSQL 9.5.7, and the Python library psycopg2.
 
 1. Download the newsdata sql database found here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
-and extract to the directory containing LogsAnalysis.py
-2. Install the Python library psycopg2. 
-3. Run 'python LogsAnalysis.py'.
+2. Extract the database to the directory containing LogsAnalysis.py
+3. To build the reporting tool, load the site's data into your local database with the command ```psql -d news -f newsdata.sql```.
+4. Run ```python LogsAnalysis.py```.
 
-Create Views
+## Create Views
 
 I chose to include the commands to create the necessary views in the .py file, so there is no need to recreate them. All the same, here they are for reference:
 
@@ -28,11 +28,11 @@ CREATE VIEW dates_and_404s AS SELECT time::timestamp::date AS date, count (log.s
 
 CREATE VIEW dates_and_percentages AS SELECT dates_and_statuses.date, dates_and_404s.errors / dates_and_statuses.stat_count ::float AS percentage FROM dates_and_404s JOIN dates_and_statuses ON dates_and_404s.date = dates_and_statuses.date;
 
-Author
+## Author
 
 Lilly Hartmetz
 
-Acknowledgments
+## Acknowledgments
 
 https://stackoverflow.com/questions/14290857/sql-select-where-field-contains-words
 https://discussions.udacity.com/t/project-logs-analysis/245190
