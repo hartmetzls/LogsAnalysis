@@ -11,22 +11,23 @@ def popular_articles():
     c = db.cursor()
     c.execute("DROP VIEW IF EXISTS top_paths;")
     c.execute("CREATE VIEW top_paths AS "
-              "SELECT path, count(log.path) as num "
+              "SELECT path, count(*) as num "
               "FROM log "
-              "WHERE path LIKE '%article%' "
-              "GROUP BY path "
-              "ORDER BY num DESC "
-              "LIMIT 3;")
+              "GROUP BY path;")
     c.execute("SELECT title, num "
               "FROM articles JOIN top_paths "
               "ON top_paths.path = '/article/' || articles.slug "
-              "ORDER BY num DESC;")
+              "ORDER BY num DESC "
+              "LIMIT 3;")
     articles = c.fetchall()
+    db.close()
     print ""
     print "What are the three most popular articles?\n"
-    for a in articles:
-        print "\t" + a[0] + " - " + str(a[1]) + " views"
-    db.close()
+    for title, views in articles:
+        if views == 1:
+            print '\t {} - {} view'.format(title, views)
+        else:
+            print '\t {} - {} views'.format(title, views)
 
 
 def popular_authors():
@@ -44,11 +45,14 @@ def popular_authors():
               "ON authors.id = popular_authors.author "
               "ORDER BY popular_authors.views DESC;")
     authors = c.fetchall()
+    db.close()
     print ""
     print "Who are the most popular authors?\n"
-    for a in authors:
-        print "\t" + a[0] + " - " + str(a[1]) + " views"
-    db.close()
+    for author, views in authors:
+        if views == 1:
+            print '\t {} - {} view'.format(author, views)
+        else:
+            print '\t {} - {} views'.format(author, views)
 
 
 def days_with_high_error_percentage():
@@ -77,12 +81,13 @@ def days_with_high_error_percentage():
     c.execute("SELECT to_char(date, 'FMMonth FMDD YYYY'), "
               "percentage from dates_and_percentages WHERE percentage > .01;")
     dates = c.fetchall()
+    db.close()
     print ""
     print "On what days did the error percentage rate exceed 1%?\n"
-    for a in dates:
-        print "\t" + a[0] + " - " + "{:.1%}".format(a[1])
+    for date, percentage in dates:
+        print '\t{} - {:.1%}'.format(date, percentage)
     print ""
-    db.close()
+
 
 if __name__ == '__main__':
     popular_articles()
