@@ -20,13 +20,10 @@ This project requires Python 2.7, PostgreSQL 9.5.7, and the Python library psyco
 I chose to include the commands to create the necessary views in the .py file, so there is no need to recreate them. All the same, here they are for reference:
 
 ```sql
-CREATE VIEW top_paths AS
-SELECT path, count(log.path) AS num
-FROM log
-WHERE path LIKE '%article%'
-GROUP BY path
-ORDER BY num DESC
-LIMIT 3;
+CREATE VIEW top_paths AS 
+SELECT path, count(*) as num 
+FROM log 
+GROUP BY path;
 ```
 ```sql
 CREATE VIEW popular_authors AS 
