@@ -12,7 +12,7 @@ This project requires Python 2.7, PostgreSQL 9.5.7, and the Python library psyco
 1. Download the data found here: https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
 2. Extract the data to the directory containing LogsAnalysis.py
 3. Execute the command ```createdb news```.
-4. Load the site's data into your local database with the command ```psql -d news -f newsdata.sql```. (```-d news``` connects the user to the database named news, which has been set up. ```-f newsdata.sql``` runs the SQL statements in the file newsdata.sql. Running this command will connect the user to the installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.)
+4. Load the site's data into the user's local database with the command ```psql -d news -f newsdata.sql```. (```-d news``` connects the user to the database named news, which has been set up. ```-f newsdata.sql``` runs the SQL statements in the file newsdata.sql. Running this command will connect the user to the installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.)
 5. Once the data is loaded into the user's database, connect to the database using ```psql -d news```.
 6. Run ```python LogsAnalysis.py```.
 
